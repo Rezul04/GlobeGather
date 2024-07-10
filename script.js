@@ -5,6 +5,7 @@ window.addEventListener("load", () => fetchNews("India"));
 
 function reload() {
     window.location.reload();
+
 }
 
 async function fetchNews(query) {
@@ -20,6 +21,7 @@ function bindData(articles) {
     cardsContainer.innerHTML = "";
 
     articles.forEach((article) => {
+        console.log(article.url);
         if (!article.urlToImage) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
@@ -52,7 +54,7 @@ let curSelectedNav = null;
 function onNavItemClick(id) {
     fetchNews(id);
     const navItem = document.getElementById(id);
-    
+
     curSelectedNav?.classList.remove("active");
     curSelectedNav = navItem;
     curSelectedNav.classList.add("active");
